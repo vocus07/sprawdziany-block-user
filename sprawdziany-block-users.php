@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sprawdziany Block Users
 Description: Prosty plugin do blokowania użytkowników w WooCommerce.
-Version: 1.0
+Version: 1.0.1
 Author: vocus
  */
 
