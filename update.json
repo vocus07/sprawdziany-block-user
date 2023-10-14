@@ -1,5 +1,11 @@
 {
-    "new_version": "1.0.1",
-    "url": "https://github.com/vocus07/sprawdziany-block-user",
-    "package": "https://github.com/vocus07/sprawdziany-block-user/archive/refs/heads/main.zip"
+    "name": "Sprawdziany Block Users",
+    "slug": "sprawdziany-block-users",
+    "version": "1.0.2",
+    "author": "vocus",
+    "homepage": "https://github.com/vocus07/sprawdziany-block-user",
+    "download_url": "https://github.com/vocus07/sprawdziany-block-user/archive/refs/heads/main.zip",
+    "sections": {
+        "description": "Drobne zmiany"
+    }
 }
