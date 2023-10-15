@@ -5,7 +5,7 @@ function check_for_plugin_update($checked_data)
     $plugin_data     = get_plugin_data(plugin_dir_path(__DIR__) . 'sprawdziany-block-users.php');
     $current_version = $plugin_data['Version'];
 
-    $api_response = wp_remote_get('https://raw.githubusercontent.com/vocus07/sprawdziany-block-user/main/update.json');
+    $api_response = wp_remote_get('https://raw.githubusercontent.com/vocus07/sprawdziany-block-user-update/main/update.json');
 
     // Debugowanie odpowiedzi
     echo '<pre>';
