@@ -11,8 +11,29 @@ function check_for_plugin_update($checked_data)
     if (!is_wp_error($api_response) && ($api_response['response']['code'] == 200)) {
         $response = json_decode($api_response['body']);
 
-        if (isset($response->version) && version_compare($response->version, $current_version, '>')) {
-            $checked_data->response['sprawdziany-block-users/sprawdziany-block-users.php'] = (array)$response;
+        // Debugowanie:
+        if (is_object($response)) {
+            error_log('Odpowiedź jest prawidłowym obiektem.');
+            error_log('Nowa wersja: ' . $response->new_version);
+        } else {
+            error_log('Odpowiedź nie jest prawidłowym obiektem. Oto odpowiedź:');
+            error_log(print_r($api_response['body'], true));
+        }
+
+        // Zmieniono klucz 'version' na 'new_version'
+        if (isset($response->new_version) && version_compare($response->new_version, $current_version, '>')) {
+            $plugin_slug = 'sprawdziany-block-users/sprawdziany-block-users.php';
+
+            $update_obj              = new stdClass();
+            $update_obj->id          = $plugin_slug;
+            $update_obj->slug        = $response->slug;
+            $update_obj->new_version = $response->new_version;
+            $update_obj->url         = $response->homepage;
+            $update_obj->package     = $response->download_url;
+            $update_obj->tested      = $response->tested;
+            // Możesz dodać więcej pól jeśli są potrzebne
+
+            $checked_data->response[$plugin_slug] = $update_obj;
         }
     }
 
