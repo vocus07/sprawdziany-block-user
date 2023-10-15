@@ -5,13 +5,13 @@
     "requires": "5.0",
     "tested": "5.8",
     "last_updated": "2023-10-10",
-    "upgrade_notice": "Drobne zmiany i poprawki w wersji 1.0.2.",
+    "upgrade_notice": "Drobne zmiany i poprawki w wersji 1.0.3",
     "author": "vocus",
     "author_homepage": "https://github.com/vocus07",
     "homepage": "https://github.com/vocus07/sprawdziany-block-user",
     "download_url": "https://github.com/vocus07/sprawdziany-block-user/archive/refs/heads/main.zip",
     "sections": {
         "description": "Drobne zmiany",
-        "changelog": "1.0.2: Drobne zmiany i poprawki."
+        "changelog": "1.0.3: Drobne zmiany i poprawki."
     }
 }
