@@ -6,27 +6,27 @@ function wc_block_users_activate()
 {
     global $wpdb;
 
-    $table_name = $wpdb->prefix . 'zablokowani_klienci';
+    $table_name      = $wpdb->prefix . 'zablokowani_klienci';
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $table_name (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        id INT AUTO_INCREMENT,
         email VARCHAR(255),
         name VARCHAR(255),
         phone VARCHAR(50),
         ip VARCHAR(50),
         domain VARCHAR(255),
         type ENUM('email', 'name', 'phone', 'ip', 'domain'),
-        INDEX(email),
-        INDEX(name),
-        INDEX(phone),
-        INDEX(ip),
-        INDEX(domain),
-        INDEX(type)
+        PRIMARY KEY (id),
+        INDEX email_index (email),
+        INDEX name_index (name),
+        INDEX phone_index (phone),
+        INDEX ip_index (ip),
+        INDEX domain_index (domain),
+        INDEX type_index (type)
     ) $charset_collate;";
 
-
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
     dbDelta($sql);
 }
 
@@ -43,11 +43,11 @@ function wc_block_users_save_to_database()
         $wpdb->query("TRUNCATE TABLE $table_name");
 
         $fields = array(
-            'wc_block_users_emails' => 'email',
-            'wc_block_users_names' => 'name',
-            'wc_block_users_phones' => 'phone',
+            'wc_block_users_emails'  => 'email',
+            'wc_block_users_names'   => 'name',
+            'wc_block_users_phones'  => 'phone',
             'wc_block_users_domains' => 'domain',
-            'wc_block_users_ips' => 'ip',
+            'wc_block_users_ips'     => 'ip',
         );
 
         foreach ($fields as $field_id => $type) {
@@ -59,7 +59,7 @@ function wc_block_users_save_to_database()
                         $item = wc_clean_phone_number($item);
                     }
                     if (!empty(trim($item))) {
-                        $data = array('type' => $type, $type => trim($item));
+                        $data   = array('type' => $type, $type => trim($item));
                         $format = array('%s', '%s');
                         $wpdb->insert($table_name, $data, $format);
                     }
