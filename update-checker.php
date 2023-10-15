@@ -18,3 +18,13 @@ function check_for_plugin_update($checked_data)
     return $checked_data;
 }
 add_filter('pre_set_site_transient_update_plugins', 'check_for_plugin_update');
+
+function force_check_plugin_updates()
+{
+    $plugin_updates = get_site_transient('update_plugins');
+    if ($plugin_updates) {
+        $plugin_updates = check_for_plugin_update($plugin_updates);
+        set_site_transient('update_plugins', $plugin_updates);
+    }
+}
+add_action('init', 'force_check_plugin_updates');

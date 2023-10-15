@@ -15,13 +15,3 @@ require_once plugin_dir_path(__FILE__) . 'includes/settings.php';
 require_once plugin_dir_path(__FILE__) . 'includes/block-users.php';
 
 register_activation_hook(__FILE__, 'wc_block_users_activate');
-
-function force_check_plugin_updates()
-{
-    $plugin_updates = get_site_transient('update_plugins');
-    if ($plugin_updates) {
-        $plugin_updates = check_for_plugin_update($plugin_updates);
-        set_site_transient('update_plugins', $plugin_updates);
-    }
-}
-add_action('init', 'force_check_plugin_updates');
