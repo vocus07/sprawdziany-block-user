@@ -1,7 +1,7 @@
 {
     "name": "Sprawdziany Block Users",
     "slug": "sprawdziany-block-users",
-    "new_version": "1.0.2",
+    "new_version": "1.0.3",
     "requires": "5.0",
     "tested": "5.8",
     "last_updated": "2023-10-10",
